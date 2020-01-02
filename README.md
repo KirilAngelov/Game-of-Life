@@ -22,11 +22,11 @@ To play this version you have to clone the repository in a folder of your choosi
 ### Patterns
 There are 3 common patterns know as:
 
-- Still lifes
+- Still lifes:
 These patterns do not change from one generation to the next. Common patterns are the Block, Beehive, Tub and many others.
 
-- Oscillators
+- Oscillators:
 After a finite number of generations these patterns return to their initial state. Popular ones are Blinker, Beacon and Toad. The listed ones have a period of 2 meaning that after two generations they return to the initial state.
 
-- Spaceships
+- Spaceships:
 Flying across the grid these patterns return to their initial configuration after a different number of ticks. Common spaceships are Glider, Lightweight spaceships, Middleweight spaceships and Heavyweight spaceships.
