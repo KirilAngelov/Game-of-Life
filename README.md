@@ -1,10 +1,10 @@
 ## Welcome to Game of Life!
 
-The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970. 
+The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970. It is played on a 2D grid filled with cells.
 
 If you are unfamiliar with this you can read below or click on this [link](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life).
 
-[Link](url) and ![Image](src)
+
 
 ### Rules 
 
@@ -30,3 +30,18 @@ After a finite number of generations these patterns return to their initial stat
 
 - Spaceships:
 Flying across the grid these patterns return to their initial configuration after a different number of ticks. Common spaceships are Glider, Lightweight spaceships, Middleweight spaceships and Heavyweight spaceships.
+
+
+### Preview
+Here is a gif of the Toad pattern perfectly flopping on the screen.
+![](https://media.giphy.com/media/idvb52bjQYiwrhqWTj/giphy.gif)
+
+
+
+### Bonuses
+When it comes to bonuses we have them all! 
+
+- A brand new pattern : Glasses (made by me!)
+
+- Different game modes and altered set of rules - Coming soon!
+[Link](url)
