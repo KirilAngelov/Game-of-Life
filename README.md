@@ -1,37 +1,32 @@
-## Welcome to GitHub Pages
+## Welcome to Game of Life!
 
-You can use the [editor on GitHub](https://github.com/KirilAngelov/Game-of-Life/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
+If you are unfamiliar with this you can read below or click on this [link](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life).
 
 [Link](url) and ![Image](src)
-```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Rules 
 
-### Jekyll Themes
+1. Any live cell with fewer than two live neighbours dies, as if by underpopulation.
+2. Any live cell with two or three live neighbours lives on to the next generation.
+3. Any live cell with more than three live neighbours dies, as if by overpopulation.
+4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/KirilAngelov/Game-of-Life/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### Support or Contact
+### How to play
+To play this version you have to clone the repository in a folder of your choosing. After that open the solution file and run the project. Upon starting you have to type the name of the pattern you want to see. 
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+
+
+### Patterns
+There are 3 common patterns know as:
+
+- Still lifes
+These patterns do not change from one generation to the next. Common patterns are the Block, Beehive, Tub and many others.
+
+- Oscillators
+After a finite number of generations these patterns return to their initial state. Popular ones are Blinker, Beacon and Toad. The listed ones have a period of 2 meaning that after two generations they return to the initial state.
+
+- Spaceships
+Flying across the grid these patterns return to their initial configuration after a different number of ticks. Common spaceships are Glider, Lightweight spaceships, Middleweight spaceships and Heavyweight spaceships.
