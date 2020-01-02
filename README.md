@@ -34,7 +34,14 @@ Flying across the grid these patterns return to their initial configuration afte
 
 ### Preview
 Here is a gif of the Toad pattern perfectly flopping on the screen.
+
+
 ![](https://media.giphy.com/media/idvb52bjQYiwrhqWTj/giphy.gif)
+
+
+
+
+
 
 
 
