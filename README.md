@@ -52,5 +52,5 @@ When it comes to bonuses we have them all!
 
 - Different game modes and altered set of rules - Coming soon!
 
-Bonus 1: Zombies!
+ - Bonus 1: Zombies! \
 Upon answering the prompt with "Yes" you enter the Zombies game mode. In this mode every dead cell has a 10% chance to respawn as a live one. Now dead generations can come to life again with a bit of luck!
