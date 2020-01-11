@@ -13,9 +13,9 @@ namespace Project
         {
             Display view = new Display();
             Console.CursorVisible = false;
-            Load(view.Prop);
+            Load(view.Prop, view.Answer);
         }
-        public static int[,] random_State(int width, int height)
+        public static int[,] randomState(int width, int height)
         {
             int[,] test = new int[width, height];
             Random generator = new Random();
@@ -54,7 +54,7 @@ namespace Project
             }
 
         }
-        public static void RenderBinary(int[,] board)
+        public static void renderBinary(int[,] board)
         {
             int rowLength = board.GetLength(0);
             int colLength = board.GetLength(1);
@@ -72,7 +72,7 @@ namespace Project
                 Console.WriteLine();
             }
         }
-        public static int GetLiveNeighbours(int[,] board, int x, int y)
+        public static int getLiveNeighbours(int[,] board, int x, int y)
         {
             int rowLength = board.GetLength(0);
             int colLength = board.GetLength(1);
@@ -96,26 +96,26 @@ namespace Project
             list.Add(newBoard[x + 1 + 1, y + 1 + 1]);
             return list.Where(z => z == 1).Count();
         }
-        public static int[,] DeadState(int width, int height)
+        public static int[,] deadState(int width, int height)
         {
 
             int[,] test = new int[width, height];
             return test;
 
         }
-        public static int[,] NextBoardState(int[,] state)
+        public static int[,] nextBoardState(int[,] state)
         {
             //Plan -> Iterate every cell of the state and use the GetLiveNeighbours function to 
             // calculate the number of live cells. Update in the DeadState board according the rules.
             int rowLength = state.GetLength(0);
             int colLength = state.GetLength(1);
             int result;
-            int[,] newBoard = DeadState(rowLength, colLength);
+            int[,] newBoard = deadState(rowLength, colLength);
             for (int i = 0; i < rowLength; i++)
             {
                 for (int j = 0; j < colLength; j++)
                 {
-                    result = GetLiveNeighbours(state, i, j);
+                    result = getLiveNeighbours(state, i, j);
                     if ((result == 0 || result == 1) && state[i, j] == 1)
                     {
                         newBoard[i, j] = 0;
@@ -136,7 +136,44 @@ namespace Project
             }
             return newBoard;
         }
-        public static void EternalLife(int[,] initial)
+        public static int[,] nextBoardStateZombies(int[,] state)
+        {
+            int rowLength = state.GetLength(0);
+            int colLength = state.GetLength(1);
+            int result;
+            Random generator = new Random();
+            int[,] newBoard = deadState(rowLength, colLength);
+            for (int i = 0; i < rowLength; i++)
+            {
+                for (int j = 0; j < colLength; j++)
+                {
+                    int chance = generator.Next(1,10);
+                    if (state[i,j]==0 && chance==1)
+                    {
+                        state[i, j] = 1;
+                    }
+                    result = getLiveNeighbours(state, i, j);
+                    if ((result == 0 || result == 1) && state[i, j] == 1)
+                    {
+                        newBoard[i, j] = 0;
+                    }
+                    if ((result == 2 || result == 3) && state[i, j] == 1)
+                    {
+                        newBoard[i, j] = 1;
+                    }
+                    if (result > 3 && state[i, j] == 1)
+                    {
+                        newBoard[i, j] = 0;
+                    }
+                    if (result == 3 && state[i, j] == 0)
+                    {
+                        newBoard[i, j] = 1;
+                    }
+                }
+            }
+            return newBoard;
+        }
+        public static void eternalLife(int[,] initial, string spawnFlag)
         {
             var nextState = initial;
             int gen = 0;
@@ -146,11 +183,19 @@ namespace Project
                 Console.Title = "Generation: " + gen;
                 Console.Clear();
                 Render(nextState);
-                nextState = NextBoardState(nextState);
+                if (spawnFlag=="Yes" )
+                {
+                    nextState = nextBoardStateZombies(nextState);
+                }
+                if (spawnFlag=="No")
+                {
+                    nextState = nextBoardState(nextState);
+                }
+               
                 gen++;
             }
         }
-        public static int[] GetArray(string path)
+        public static int[] getArray(string path)
         {
             var list = new List<int>();
             string[] lines = File.ReadLines(path).ToArray();
@@ -161,14 +206,14 @@ namespace Project
             }
             return list.ToArray();
         }
-        public static int[,] ConvertMatrix(int[] flat, int m, int n)
+        public static int[,] convertMatrix(int[] flat, int m, int n)
         {
             int[,] ret = new int[m, n];
             // BlockCopy uses byte lengths: a double is 8 bytes
             Buffer.BlockCopy(flat, 0, ret, 0, flat.Length * sizeof(int));
             return ret;
         }
-        public static void Load(string thing)
+        public static void Load(string thing,string spawnFlag)
         {
             int a = 0, b = 0;
             if (thing == "Random")
@@ -176,8 +221,8 @@ namespace Project
                 Random rnd = new Random();
                 a = rnd.Next(5, 25);
                 b = rnd.Next(5, 50);
-                int[,] state = random_State(a, b);
-                EternalLife(state);
+                int[,] state = randomState(a, b);
+                eternalLife(state,spawnFlag);
             }
             if (thing == "Blinker")
             {
@@ -217,9 +262,9 @@ namespace Project
             }*/
 
             string load = documents.Where(x => x.Contains(thing)).First();
-            var arr = GetArray(load);
-            var Matrix = ConvertMatrix(arr, a, b);
-            EternalLife(Matrix);
+            var arr = getArray(load);
+            var Matrix = convertMatrix(arr, a, b);
+            eternalLife(Matrix,spawnFlag);
         }
     }
 }
