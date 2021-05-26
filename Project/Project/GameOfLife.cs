@@ -250,7 +250,7 @@ namespace Project
                 a = 15;
                 b = 38;
             }
-            var documents = System.IO.Directory.GetFiles("../../../../../../Game-of-Life");
+            var documents = System.IO.Directory.GetFiles("../../../../../../Game-of-Life/Starters");
             /*var list = new List<string>();
             var ext = new char[]{ 't', 'x' };
             for (int i = 0; i < documents.Length; i++)
